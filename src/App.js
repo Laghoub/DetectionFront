@@ -1,24 +1,30 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react';
+import { BrowserRouter as Router, Route, Routes, Navigate } from 'react-router-dom';
+import Login from './Login';
+import VerifyIdentity from './VerifyIdentity';
+import Home from './Home';
+import Exam from './exam';
+import FraudDetectionPage from './dashboard.js';
+import ExamResults from './result.js';
+
 
 function App() {
+  const isLoggedIn = localStorage.getItem("isLoggedIn")
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <div>
+        <Routes>
+         <Route path="/" element={<Login />} />
+         <Route path="/verify" element={<VerifyIdentity />} />
+         <Route path="/home" element={<Home />} />
+         <Route path="/exam" element={<Exam />} />
+         <Route path="/dash" element={<FraudDetectionPage />} />
+         <Route path="/result" element={<ExamResults />} />
+
+        
+        </Routes>
+      </div>
+    </Router>
   );
 }
 
